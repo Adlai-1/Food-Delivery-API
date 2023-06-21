@@ -6,7 +6,44 @@ import {FulfillmentModel} from "../Models/Fulfilment.js"
 
 export const resolvers = {
     Query:{
-        welcome: () => 'GraphQl server is up!'
+        welcome: () => 'GraphQl server is up!',
+
+        Users: () => 
+            UserModel.find({}).then((doc)=>{
+                return doc
+            }).catch((err) => {
+                return {
+                    code: 400,
+                    message: err.message
+                }
+            }),
+
+        UserInfo: (_, {userId}) => UserModel.findById(userId).then((doc)=>{
+            return doc
+        },).catch((err) => {
+            return {
+                code: 400,
+                message: err.message
+            }
+        }),
+
+        Resturants: () => ResturantModel.find({}).then((doc) =>{
+            return doc
+        }).catch((err) => {
+            return {
+                code: 400,
+                message: err.message
+            }
+        }),
+
+        ResturantInfo: (_, {userId}) => ResturantModel.findById(userId).then((doc)=>{
+            return doc
+        },).catch((err) => {
+            return {
+                code: 400,
+                message: err.message
+            }
+        })
     },
 
     Mutation:{

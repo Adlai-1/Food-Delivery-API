@@ -38,7 +38,7 @@ type User {
     updatedAt: Date
 }
 
-type Resturants {
+type Resturant {
     _id: ID
     Name: String
     Telephone: String
@@ -73,6 +73,10 @@ type FulfillmentOrder {
 
 type Query {
     welcome: String
+    Users: [User]
+    UserInfo (userId: ID) : User
+    ResturantInfo (resturantId: ID): Resturant
+    Resturants: [Resturant]
 }
 
 type Mutation{
