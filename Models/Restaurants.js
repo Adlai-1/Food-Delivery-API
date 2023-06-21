@@ -4,7 +4,6 @@ const {model, Schema} = mongo
 
 // Schema for Resturants of the Food Delivery Platform 
 const schema = Schema({
-    _id: Schema.Types.ObjectId,
 
     Name:{
         type: String,

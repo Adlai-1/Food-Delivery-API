@@ -13,6 +13,21 @@ type menu {
     Price: String
 }
 
+input user{
+    Name: String!
+    Email: String!
+    Telephone: String!
+    Password: String
+}
+
+input resturant{
+    Name: String!
+    Telephone: String!
+    City: String!
+    Address: String!
+    Description: String!
+}
+
 type User {
     _id: ID
     Name: String
@@ -60,4 +75,8 @@ type Query {
     welcome: String
 }
 
+type Mutation{
+    CreateUser (UserData: user ): Response
+    AddResturant (ResturantData: resturant): Response
+}
 `

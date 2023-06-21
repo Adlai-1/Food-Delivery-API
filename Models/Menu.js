@@ -5,8 +5,6 @@ const {model, Schema} = mongo
 // Schema for Food Menus
 const schema = Schema({
 
-    _id: Schema.Types.ObjectId,
-
     Resturant:{type: Schema.Types.ObjectId, ref: 'Resturants'},
 
     Menu:[{

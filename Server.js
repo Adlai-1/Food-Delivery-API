@@ -13,7 +13,7 @@ const server = new ApolloServer({
 });
 
 
-const uri = "mongodb://localhost:27017/Food-Delivery";
+const uri = "mongodb://127.0.0.1:27017/Food-Delivery";
 
 //Establishing a connection for our MongoDB Server...
 connect(uri);
