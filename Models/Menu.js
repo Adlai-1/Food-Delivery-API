@@ -7,18 +7,15 @@ const schema = Schema({
 
     Resturant:{type: Schema.Types.ObjectId, ref: 'Resturants'},
 
-    Menu:[{
+    Meal:{
+        type: String,
+        required: true
+    },
 
-        Food: {
-            type: String,
-            required: true
-        },
-
-        Price: {
-            type: String,
-            required: true
-        }
-    }]
+    Price:{
+        type: String,
+        required: true
+    }
 
 }, {timestamps: true})
 

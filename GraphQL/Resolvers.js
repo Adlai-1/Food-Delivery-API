@@ -43,6 +43,15 @@ export const resolvers = {
                 code: 400,
                 message: err.message
             }
+        }),
+
+        ResturantMenu: (_,{resturantId}) => ResturantModel.find({Resturant :resturantId}).then((doc)=>{
+            return doc
+        }).catch((err) => {
+            return {
+                code: 400,
+                message: err.message
+            }
         })
     },
 
@@ -77,6 +86,24 @@ export const resolvers = {
                 return {
                     code: 400,
                     message: err.message
+                }
+            }
+        },
+
+        AddToMenu: async (_, args) => {
+            try{
+                const file = new MenuModel(args.MealData)
+                await file.save()
+                return {
+                    code: 200,
+                    message: "Meal added to Menu!"
+                }
+            }
+            catch (err) {
+                console.log(err)
+                return{
+                    code: 400,
+                    message: "Unable to add Meal to Menu!"
                 }
             }
         }

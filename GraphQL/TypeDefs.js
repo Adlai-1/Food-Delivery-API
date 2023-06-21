@@ -28,6 +28,12 @@ input resturant{
     Description: String!
 }
 
+input meal {
+    Resturant: ID!
+    Meal : String!
+    Price: String!
+}
+
 type User {
     _id: ID
     Name: String
@@ -59,8 +65,9 @@ type Order {
 
 type Menu {
     _id: ID
-    Resturant: String
-    Menu: [menu]
+    Resturant: ID
+    Meal: String
+    Price: String
 }
 
 type FulfillmentOrder {
@@ -75,12 +82,14 @@ type Query {
     welcome: String
     Users: [User]
     UserInfo (userId: ID) : User
-    ResturantInfo (resturantId: ID): Resturant
     Resturants: [Resturant]
+    ResturantInfo (resturantId: ID): Resturant
+    ResturantMenu (resturantId: ID): [Menu]
 }
 
 type Mutation{
     CreateUser (UserData: user ): Response
     AddResturant (ResturantData: resturant): Response
+    AddToMenu (MealData: meal) : Response
 }
 `
