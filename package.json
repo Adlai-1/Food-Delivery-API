@@ -1,0 +1,17 @@
+{
+  "name": "food-delivery-api",
+  "version": "1.0.0",
+  "description": "A simple AI Implementation for a Food Delivery App.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Adlai Nettey",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^3.12.0",
+    "graphql": "^16.6.0",
+    "mongoose": "^7.3.0"
+  },
+  "type": "module"
+}
