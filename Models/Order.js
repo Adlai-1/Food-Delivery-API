@@ -2,7 +2,7 @@ import mongo from "mongoose"
 
 const {model, Schema} = mongo
 
-/* Schema for Food Order Details*/
+// Schema for Food Order Details
 const schema = Schema({
 
     _id: Schema.Types.ObjectId,
@@ -16,3 +16,6 @@ const schema = Schema({
     Price: { type: String }
 
 }, {timestamps: true})
+
+// creating and exporting Db Model...
+export const OrderModel = model("Orders", schema)

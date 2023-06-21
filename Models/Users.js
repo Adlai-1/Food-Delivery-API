@@ -2,7 +2,7 @@ import mongo from "mongoose"
 
 const {model, Schema} = mongo
 
-/* Schema for Users of the Food Delivery Platform */
+// Schema for Users of the Food Delivery Platform 
 const schema = Schema({
 
     _id: Schema.Types.ObjectId,
@@ -29,3 +29,6 @@ const schema = Schema({
     }
 
 }, {timestamps: true})
+
+// creating and exporting Db Model...
+export const UserModel = model("Users", schema)

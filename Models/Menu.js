@@ -2,7 +2,7 @@ import mongo from "mongoose"
 
 const {model, Schema} = mongo
 
-/* Schema for Food Menus*/
+// Schema for Food Menus
 const schema = Schema({
 
     _id: Schema.Types.ObjectId,
@@ -23,3 +23,6 @@ const schema = Schema({
     }]
 
 }, {timestamps: true})
+
+// creating and exporting Db Model...
+export const MenuModel = model("Menus", schema)

@@ -1,9 +1,9 @@
 import { ApolloServer } from "apollo-server";
 import {typeDefs} from "./GraphQL/TypeDefs.js"
 import {resolvers} from "./GraphQL/Resolvers.js"
-//import mongo from "mongoose";
+import mongo from "mongoose";
 
-//const { connect } = mongo;
+const { connect } = mongo;
 
 const server = new ApolloServer({
   typeDefs,
@@ -13,10 +13,10 @@ const server = new ApolloServer({
 });
 
 
-//let uri = process.env.MONGO;
+const uri = "mongodb://localhost:27017/Food-Delivery";
 
 //Establishing a connection for our MongoDB Server...
-//connect(uri);
+connect(uri);
 
 
 //Setting-up listener on port 500 number...

@@ -56,7 +56,8 @@ type FulfillmentOrder {
     DeliveredTo: Boolean
 }
 
-type Query{
+type Query {
     welcome: String
 }
+
 `
