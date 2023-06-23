@@ -8,8 +8,8 @@ export const UserRouter = Router()
 // Endpoint for creating new Users...
 UserRouter.post("/createUser", async (request, response) => {
     const hash = argon2.hash(request.body.Password)
-    
-    hash.then( async (password) => {
+
+    hash.then(async (password) => {
         const file = new UserModel({
             Name: request.body.Name,
             Email: request.body.Email,
@@ -22,43 +22,43 @@ UserRouter.post("/createUser", async (request, response) => {
             message: "User Created!"
         })
     })
-    .catch((err) => {
-        response.status(400).json({
-            message: "Couldn't create User.",
-            error: err.message
+        .catch((err) => {
+            response.status(400).json({
+                message: "Couldn't create User.",
+                error: err.message
+            })
         })
-    })
-} )
+})
 
 // Endpoint for Users to login...
 UserRouter.post('/login', (request, response) => {
     // Authenticate login User...
-    UserModel.find({Email: request.body.Email}).
-    then((doc) => {
-        if (doc) {
-            // Verify the password...
-            argon2.verify(doc[0].Password, request.body.Password)
-            .then((match) => {
-                if (match) {
-                    // create auth token...
-                    const Useremail = request.body.Email
-                    const Authtoken = jsonwebtoken.sign(Useremail, process.env.SECRETKEY)
+    UserModel.find({ Email: request.body.Email }).
+        then((doc) => {
+            if (doc) {
+                // Verify the password...
+                argon2.verify(doc[0].Password, request.body.Password)
+                    .then((match) => {
+                        if (match) {
+                            // create auth token...
+                            const Useremail = request.body.Email
+                            const Authtoken = jsonwebtoken.sign(Useremail, process.env.SECRETKEY)
 
-                    response.status(200).json({
-                        AuthToken: Authtoken
+                            response.status(200).json({
+                                AuthToken: Authtoken
+                            })
+                        }
+                        else {
+                            response.status(401).json({
+                                message: "Wrong password used!"
+                            })
+                        }
                     })
-                }
-                else {
-                    response.status(401).json({
-                        message: "Wrong password used!"
-                    })
-                }
-            })
-        }
-        else{
-            response.status(400).json({
-                message: "User does not exsist!"
-            })
-        }
-    })
+            }
+            else {
+                response.status(400).json({
+                    message: "User does not exsist!"
+                })
+            }
+        })
 })
