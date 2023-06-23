@@ -25,15 +25,15 @@ OrderRouter.use((req, res, next) => {
 });
 
 // Endpoint used to create Orders...
-OrderRouter.post('/create/order', async (request, response) => {
+OrderRouter.post('/create', async (req, res) => {
   try {
-    const file = OrderModel(request.body);
+    const file = OrderModel(req.body);
     await file.save();
-    response.status(200).json({
+    res.status(200).json({
       message: "Order created!"
     });
   } catch (err) {
-    response.status(400).json({
+    res.status(400).json({
       message: "Couldn't create Order",
       error: err.message
     });
@@ -41,33 +41,33 @@ OrderRouter.post('/create/order', async (request, response) => {
 });
 
 // Endpoint used to track an Order's status...
-OrderRouter.get('/order/status/:orderId', (request, response) => {
-  OrderModel.find({ _id: request.params.orderId })
+OrderRouter.get('/status/:orderId', (req, res) => {
+  OrderModel.find({ _id: req.params.orderId })
     .then((doc) => {
-      response.json({
+      res.json({
         PackageEnroute: doc[0].Enroute,
         PackageDelivered: doc[0].PaidAndDelivered
       });
     })
     .catch((err) => {
-      response.status(404).json({
+      res.status(404).json({
         message: "Couldn't find what you wanted.",
         error: err.message
       });
     });
 });
 
-OrderRouter.get('/order/info/:orderId', (request, response) => {
-  OrderModel.find({ _id: request.params.orderId }).
+OrderRouter.get('/info/:orderId', (req, res) => {
+  OrderModel.find({ _id: req.params.orderId }).
     populate("User", "Name").
-    populate("Restaurant", "Name").
+    populate("Resturant", "Name").
     then((doc) => {
-      response.status(200).json({
+      res.status(200).json({
         data: doc
       });
     })
     .catch((err) => {
-      response.status(404).json({
+      res.status(404).json({
         message: "Couldn't find what you wanted.",
         error: err.message
       });

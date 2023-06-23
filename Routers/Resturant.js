@@ -42,7 +42,7 @@ ResturantRouter.get('/all' ,(req, res) => {
 
 // Endpoint to get info linked to a Resturant...
 ResturantRouter.get('/:resturantId', (req, res) => {
-    ResturantModel.findById(request.params.resturantId)
+    ResturantModel.findById(req.params.resturantId)
     .then((doc) =>{
         res.status(200).json({
             data: doc

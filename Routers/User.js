@@ -30,7 +30,7 @@ UserRouter.post("/create", async (req, res) => {
         })
 })
 
-// Endpoint for Users to login...
+// Endpoint for User to login...
 UserRouter.post('/login', (req, res) => {
     // Authenticate login User...
     UserModel.find({ Email: req.body.Email }).
@@ -63,10 +63,11 @@ UserRouter.post('/login', (req, res) => {
         })
 })
 
+// Endpoint for Admin to login..
 UserRouter.post('/admin/login', (req, res) => {
     if (req.body.Email == process.env.ADMIN_EMAIL) {
         if (req.body.Password == process.env.ADMIN_PASSWORD) {
-            Authtoken = jsonwebtoken.sign(req.body.Email, process.env.ADMIN_KEY)
+            const Authtoken = jsonwebtoken.sign(req.body.Email, process.env.ADMIN_KEY)
 
             res.status(200).json({
                 AuthToken: Authtoken
