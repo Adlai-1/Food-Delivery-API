@@ -16,7 +16,7 @@ const { connect } = mongo;
 app.use(express.json())
 
 // Welcome Endpoint...
-app.get('/welcome:name', (req, res) => {
+app.get('/welcome/:name', (req, res) => {
   res.json({ 'message': `Hello ${req.params.name}, welcome to the Food-Delivery-API` })
 })
 
