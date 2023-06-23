@@ -8,20 +8,20 @@ export const AdminRouter = Router()
 // Middleware specific to this Router
 AdminRouter.use((req, res, next) => {
     const authHeader = req.headers['authorization'];
-  
+
     const token = authHeader && authHeader.split(' ')[1];
-  
+
     if (token == null) {
-      return res.status(401).json({ status: 401, message: "Access Denied!" });
+        return res.status(401).json({ status: 401, message: "Access Denied!" });
     } else {
-      jsonwebtoken.verify(token, process.env.ADMIN_KEY, (err, user) => {
-        if (err) {
-          return res.status(403).json({ status: 403, message: "Token Verification Failed!" });
-        }
-        // Store the user object in the request for future use, if needed
-        req.user = user;
-        next();
-      });
+        jsonwebtoken.verify(token, process.env.ADMIN_KEY, (err, user) => {
+            if (err) {
+                return res.status(403).json({ status: 403, message: "Token Verification Failed!" });
+            }
+            // Store the user object in the request for future use, if needed
+            req.user = user;
+            next();
+        });
     }
 });
 

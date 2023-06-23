@@ -166,7 +166,7 @@ where resturantId = 23
 Expected Input: None
 
 Expected Output: {
-"\_id": "6495d0cbd49cee047c7ec263",
+"\_id": "23",
 "Name": "Kasoa Cusine",
 "Telephone": "0550903238",
 "City": "Kasoa",
@@ -196,7 +196,7 @@ Expected Output:{
 {
 "_id": "6495e0592a4bfd79d88bcec2",
 "Resturant": {
-"_id": "6495d0cbd49cee047c7ec263",
+"_id": "4b6",
 "Name": "Kasoa Cusine"
 },
 "Meal": "Waakye",
@@ -254,7 +254,7 @@ Expected Input: None
 Expected Output:{
 "data": [
 {
-"_id": "6495f296064d37a25157fbda",
+"_id": "34",
 "User": {
 "_id": "6495beb036549911d6f1ec7a",
 "Name": "David Nettey"
