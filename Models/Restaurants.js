@@ -24,11 +24,6 @@ const schema = Schema({
     Address:{
         type: String,
         required: true
-    },
-
-    Description:{
-        type: String,
-        require: true
     }
 
 }, {timestamps: true})

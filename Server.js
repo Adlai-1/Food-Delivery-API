@@ -1,26 +1,35 @@
-import { ApolloServer } from "apollo-server";
-import {typeDefs} from "./GraphQL/TypeDefs.js"
-import {resolvers} from "./GraphQL/Resolvers.js"
+import { config } from "dotenv"
+import express from "express"
 import mongo from "mongoose";
+import { ResturantRouter } from "./Routers/Resturant.js"
+import { MenuRouter } from "./Routers/FoodMenu.js"
+import { OrderRouter } from "./Routers/FoodOrders.js"
+import { UserRouter } from "./Routers/User.js";
 
+config()
+
+const app = express()
 const { connect } = mongo;
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  csrfPrevention: true,
-  cache: "bounded",
-  introspection: true,
-});
+//Middleware for parsing json data...
+app.use(express.json())
 
+// Welcome Endpoint...
+app.get('/welcome:name', (req, res) =>{
+  res.json({'message': `Hello ${req.params.name}, welcome to the Food-Delivery-API`})
+})
 
-const uri = "mongodb://127.0.0.1:27017/Food-Delivery";
+app.use('/resturant', ResturantRouter)
+app.use('/menu', MenuRouter)
+app.use('/order', OrderRouter)
+app.use('/user', UserRouter)
 
-//Establishing a connection for our MongoDB Server...
+const uri = process.env.MONGO;
+
+//Establishing a connection for the MongoDB Server...
 connect(uri);
 
-
-//Setting-up listener on port 500 number...
-server.listen({ port: 500 }).then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
-});
+//Setting-up listener on port 5000 number...
+app.listen(process.env.PORT,() => {
+  console.log(`🚀 Server ready at http://localhost:${process.env.PORT}`)
+})
