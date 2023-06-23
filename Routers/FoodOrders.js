@@ -25,7 +25,7 @@ OrderRouter.use((req, res, next) => {
 });
 
 // Endpoint used to create Orders...
-OrderRouter.post('/createOrder', async (request, response) => {
+OrderRouter.post('/create/order', async (request, response) => {
   try {
     const file = OrderModel(request.body);
     await file.save();
@@ -41,7 +41,7 @@ OrderRouter.post('/createOrder', async (request, response) => {
 });
 
 // Endpoint used to track an Order's status...
-OrderRouter.get('/orderStatus/:orderId', (request, response) => {
+OrderRouter.get('/order/status/:orderId', (request, response) => {
   OrderModel.find({ _id: request.params.orderId })
     .then((doc) => {
       response.json({
@@ -57,9 +57,9 @@ OrderRouter.get('/orderStatus/:orderId', (request, response) => {
     });
 });
 
-OrderRouter.get('/orderInfo/:orderId', (request, response) => {
+OrderRouter.get('/order/info/:orderId', (request, response) => {
   OrderModel.find({ _id: request.params.orderId }).
-    //populate("User", "Name"). -> will come back to it later!
+    populate("User", "Name").
     populate("Restaurant", "Name").
     then((doc) => {
       response.status(200).json({
