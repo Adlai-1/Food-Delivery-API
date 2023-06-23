@@ -275,3 +275,36 @@ Expected Output:{
 }
 
 NB: All the above end points are POST methods and require the _User_ token access before for a successful request can be made.
+
+
+# How to Run the API locally
+
+Requirements.
+
+1.Make sure you have Nodejs installed on yor local machine.
+2.Also make sure you have MongoDB installed.
+
+# Step 1
+clone this repo using the command -> git clone https://github.com/Adlai-1/Food-Delivery-API
+
+# Step 2
+In your terminal, cd into the directory and run npm install to download the necessary dependencies.
+
+# Step 3
+This API uses enviroment variables for some configurations which you have to setup. Simply, all you need to do is rename the file ".env.example" to ".env". Do not change its position in the directory.
+
+# Step 4
+Start your MongoDB server. You can go to https://www.tutorialkart.com/mongodb/start-mongodb-server/#gsc.tab=0 for a detailed process on what to do.
+
+# Step 5
+Run the API server using the command npm start.
+
+# Step 6
+You can test the API using tools like cURL or Postman. Preferably Postman, simply because that was used to test this API.
+
+# Extra Info
+To know how to test this API using Postman, go to https://www.guru99.com/postman-tutorial.html for a instructions.
+
+Also the authorization type to choose on Postman is Bearer Token. Once selected, a text box is provided where
+you paste an access token (i.e either User or Admin) before running the API.
+Note, you only do that for endpoints that need an access token.
