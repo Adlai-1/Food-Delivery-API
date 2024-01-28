@@ -35,7 +35,7 @@ AdminRouter.post('/add/resturant', async (req, res) => {
         });
     } catch (err) {
         res.status(400).json({
-            message: "Couldn't create new Resturant",
+            message: "Couldn't create Resturant.",
             error: err.message
         });
     }
@@ -47,11 +47,11 @@ AdminRouter.post('/add/menu/', async (req, res) => {
         const file = MenuModel(req.body);
         await file.save();
         res.status(200).json({
-            message: "Order created!"
+            message: "Menu created!"
         });
     } catch (err) {
         res.status(400).json({
-            message: "Couldn't create Order",
+            message: "Couldn't create Menu.",
             error: err.message
         });
     }
