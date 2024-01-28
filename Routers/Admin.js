@@ -31,11 +31,11 @@ AdminRouter.post('/add/resturant', async (req, res) => {
         const file = ResturantModel(req.body);
         await file.save();
         res.status(200).json({
-            message: "Order created!"
+            message: "Resturant created!"
         });
     } catch (err) {
         res.status(400).json({
-            message: "Couldn't create Order",
+            message: "Couldn't create new Resturant",
             error: err.message
         });
     }
