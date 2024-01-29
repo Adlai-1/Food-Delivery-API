@@ -1,5 +1,5 @@
 # About
-This is a REST API for a fodd delivery service.
+This is a REST API for a food delivery service.
 
 # Documentation
 ## The API allows Users to:
