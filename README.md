@@ -8,8 +8,8 @@ This is a REST API for a food delivery service.
 * Handle order fulfillment.
 * Create their user profile.
 ## The API allows Admins to:
-* Add new Resturants to the Db.
-* Add new menus in the Db.
+* Add new Resturants to the DB.
+* Add new menus to the DB.
 
 # Tech Stack
 * JavaScript.
@@ -29,7 +29,7 @@ There are 5 routers used in this API:
 
 # API End-points 
 
-## The welcome End-point
+## The welcome End-point.
 * Route Path -> '/welcome/:name
 * Request URL -> http://localhost:5000/welcome/David
 * Expected response -> {"message": "Hello David, welcome to the Food-Delivery-API"}
@@ -53,7 +53,7 @@ There are 5 routers used in this API:
 * Expected Output: {"AuthToken": "fdfdf.dfdfdf.dfdfd"}
 *This is a POST method.*
 
-### '/admin/login' -> Is used to log Admin Users in and provide them with an access token
+### '/admin/login' -> Is used to log Admin Users in and provide them with an access token.
 * Route Path -> '/user/admin/login'
 * Request URL -> http://localhost:5000/user/admin/login
 * Expected Input: {"Email" : "david@carrot.com",
@@ -113,7 +113,7 @@ NB: Both end points are POST methods and require the _Admin_ token access before
 ]
 }
 
-### '/:resturantId' -> return the details of a Resturant associated to the resturantId provided
+### '/:resturantId' -> return the details of a Resturant associated to the resturantId.
 * Route Path -> '/resturant/23'
 * Request URL -> http://localhost:5000/resturant/23
 where resturantId = 23
@@ -131,7 +131,7 @@ where resturantId = 23
 NB: Both end points are GET methods and require the _User_ token access before for a successful request can be made.
 
 ## The '/menu' Router
-### '/resturant/:resturantId' -> returns menu associated with resturantId
+### '/resturant/:resturantId' -> returns menu associated with resturantId.
 * Route Path -> '/menu/resturant/:resturantId'
 * Request URL -> http://localhost:5000/menu/resturant/4b6
 where resturantId = 4b6
@@ -155,7 +155,7 @@ where resturantId = 4b6
 NB: The end point is a GET methods and require the _User_ token access before for a successful request can be made.
 
 ## The '/order' Router
-### '/create' -> Is used to create a new food order for delivery
+### '/create' -> Is used to create a new food order for delivery.
 * Route Path -> '/order/create'
 * Request URL -> http://localhost:5000/order/create
 * Expected Input: {
@@ -167,7 +167,7 @@ NB: The end point is a GET methods and require the _User_ token access before fo
 where "6493" is a User's ID and "6495d0" is a Resturant's ID
 *Expected Output: {"message": "Order created!"}
 
-### '/order/status/:orderId' -> Is used to check the status of an order
+### '/order/status/:orderId' -> Is used to check the status of an order.
 * Route Path -> '/order/status/:orderId'
 * Request URL -> http://localhost:5000/order/status/34
 where orderId = 34
@@ -175,7 +175,7 @@ where orderId = 34
 * Expected Output: {"PackageEnroute": false,
 "PackageDelivered": false}
 
-### '/order/info/:orderId' -> returns info of an order associated with the orderId
+### '/order/info/:orderId' -> returns info of an order associated with the orderId.
 * Route Path -> '/order/info:orderId'
 * Request URL -> http://localhost:5000/order/info/34
 where orderId = 34
